@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Post;
-use Illuminate\Http\Request;
+use App\User;
+use App\Department;
 
 class PostController extends Controller
 {
 
-    public function index(Post $post)
+    public function index(Post $post,User $user,Department $department)
     {
-        return $post->get();
+        return view('home')->with(['posts' => $post->get(),'users' => $user->get(),'departments' => $department->get()]);
     }
+ 
 }
