@@ -12,3 +12,9 @@
 */
 
 Route::get('/', 'PostController@index');
+
+Route::get('/mypage/{user}', 'PostController@memberpage');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
