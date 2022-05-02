@@ -6,15 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    public function user(){
-        return $this->hbelongTo('App/User');
+    public function User(){
+        return $this->belongTo('App/User');
     }
     
-    public function department(){
+    public function Department(){
         return $this->belongTo('App/department');
     }
     
-    public function performance(){
-        return $this->hbelongTo('App/performance');
+    public function Performance(){
+        return $this->belongTo('App/performance');
     }
 }
