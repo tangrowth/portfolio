@@ -18,3 +18,5 @@ Route::get('/mypage/{user}', 'PostController@memberpage');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/department/{department}', 'DepartmentController@index');
