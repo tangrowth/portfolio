@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+@extends('layouts.app')
+
+@section('content')
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -31,7 +34,7 @@
         </div>
         
         <div class='menu'>
-            <a href="/home">ホーム</a>
+            <a href="/">ホーム</a>
             @foreach ($departments as $department)
                 <div class='dep_menu'>
                     <a href="/departments/{{ $department->id }}">{{ $department->department }}</a>
@@ -40,3 +43,4 @@
         </div>
     </body>
 </html>
+@endsection

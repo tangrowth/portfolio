@@ -11,13 +11,13 @@
     </head>
     
     <body>
-        <h1 class='department_title'>{{ $user->name }}</h1>
-        <p href="/mypage/{{ $user->id }}">{{ $user->name }}</p>
+        <h1 class='department_title'>マイページ</h1>
+        <p href="/mypage/{{ Auth::user()->id }}">{{ Auth::user()->name }}</p>
         
         <div class='profile'>
-            <p class='icon'>{{ $user->icon }}</p>
-            <p class='age'>{{ $user->age }}</p>
-            <p class='comment'>{{ $user->comment }}</p>
+            <p class='icon'>{{ Auth::user()->icon }}</p>
+            <p class='age'>{{ Auth::user()->age }}</p>
+            <p class='comment'>{{ Auth::user()->comment }}</p>
         </div>
         
         <div class='posts'>
@@ -31,7 +31,7 @@
         </div>
         
         <div class='menu'>
-            <a href="/home">ホーム</a>
+            <a href="/">ホーム</a>
             @foreach ($departments as $department)
                 <div class='dep_menu'>
                     <a href="/departments/{{ $department->id }}">{{ $department->department }}</a>
