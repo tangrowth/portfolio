@@ -20,6 +20,9 @@ class CreatePostsTable extends Migration
             $table->string('image', 100)->nullable();
             $table->timestamps();
             $table->softDeletes();
+            $table->integer('users_id')->unsigned();
+            $table->integer('performances_id')->unsigned();
+            $table->integer('departments_id')->unsigned();
         });
     }
 
