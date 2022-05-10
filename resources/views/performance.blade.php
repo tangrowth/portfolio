@@ -27,13 +27,6 @@
                     <p>{{ $performance->date }}</p>
                 </div>
         </div>
-        
-        <div class='members'>
-            <h5>メンバー</h5>
-            @foreach
-                <a href="/mypage/{{ $user->id }}">{{ $user->name}}</a>
-            @endforeach
-        </div>
     </body>
 </html>
 @endsection

@@ -14,13 +14,17 @@
     </head>
     
     <body>
-        <h1 class='department_title'>公演　ホーム</h1>
+        <h1 class='department_title'>ホーム</h1>
         <div class='posts'>
+            [<a href='/posts/create'>作成</a>]
             <h2>一覧</h2>
                 @foreach ($posts as $post)
                     <div class='post'>
-                        <h3 class='title'>{{ $post->title }}</h3>
+                        <h3 class='title'>
+                             <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
+                        </h3>
                         <p class='body'>{{ $post->body }}</p>
+                        <p class="edit">[<a href="/posts/{{ $post->id }}/edit">edit</a>]</p>
                     </div>
                 @endforeach
         </div>
@@ -30,19 +34,10 @@
                 @foreach ($users as $user)
                     <div class='members'>
                         <p class='member'>
-                            <a href="/mypage/{{ $user->id }}">{{ $user->name}}</a>
+                            <a href="/memberpage/{{ $user->id }}">{{ $user->name}}</a>
                         </p>
                     </div>
                 @endforeach
-        </div>
-        
-        <div class='menu'>
-            <a href="/">ホーム</a>
-            @foreach ($departments as $department)
-                <div class='dep_menu'>
-                    <a href="/departments/{{ $department->id }}">{{ $department->department }}</a>
-                </div>
-            @endforeach
         </div>
     </body>
 </html>

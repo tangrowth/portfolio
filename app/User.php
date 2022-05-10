@@ -37,19 +37,27 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-}
 
-class User_ extends Model
-{
-    public function Post(){
-        return $this->hasMany('App/User');
+
+    public function Posts(){
+        return $this->hasMany('App\Post');
     }
     
-    public function Department(){
-        return $this->hasMany('App/department');
+    public function Departments(){
+        return $this->hasMany('App\department');
     }
     
     public function Performance(){
-        return $this->belongTo('App/performance');
+        return $this->belongTo('App\performance');
+    }
+    
+    public function getByCategory(int $limit_count = 5)
+    {
+         return $this->posts()->with('user')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
+
+    public function test()
+    {
+        return $this->get();
     }
 }

@@ -18,6 +18,7 @@ class CreatePerformancesTable extends Migration
             $table->string('perforemance');
             $table->string('story');
             $table->string('date');
+            $table->integer('users_id')->unsigned();
         });
     }
 

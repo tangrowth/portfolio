@@ -13,10 +13,18 @@
 
 Route::get('/', 'PostController@index');
 
-Route::get('/mypage/{user}', 'PostController@memberpage');
+Route::get('/memberpage/{user}', 'UserController@index');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/department/{department}', 'DepartmentController@index');
+
+Route::post('/posts', 'PostController@store');
+Route::get('/posts/create', 'PostController@create');
+Route::get('/posts/{post}', 'PostController@show');
+
+
+Route::get('/posts/{post}/edit', 'PostController@edit');
+Route::put('/posts/{post}', 'PostController@update');

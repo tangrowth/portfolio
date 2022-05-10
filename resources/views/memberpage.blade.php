@@ -27,19 +27,12 @@
             <h2>一覧</h2>
                 @foreach ($posts as $post)
                     <div class='post'>
-                        <h3 class='title'>{{ $post->title }}</h3>
+                        <h3 class='title'>
+                             <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
+                        </h3>
                         <p class='body'>{{ $post->body }}</p>
                     </div>
                 @endforeach
-        </div>
-        
-        <div class='menu'>
-            <a href="/">ホーム</a>
-            @foreach ($departments as $department)
-                <div class='dep_menu'>
-                    <a href="/departments/{{ $department->id }}">{{ $department->department }}</a>
-                </div>
-            @endforeach
         </div>
     </body>
 </html>
