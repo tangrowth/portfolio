@@ -25,6 +25,7 @@ Route::get('/department/{department}', 'DepartmentController@index');
 
 Route::post('/performance','PerformanceController@store');
 Route::get('/performance/create', 'PerformanceController@create');
+Route::get('/performance/{performance}', 'PerformanceController@index');
 
 Route::post('/posts', 'PostController@store');
 Route::get('/posts/create', 'PostController@create');

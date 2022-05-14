@@ -15,9 +15,11 @@ class CreatePerformanceUserTable extends Migration
     {
         Schema::create('performance_user', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('performance_id')->unsigned();
-            $table->bigInteger('user_id')->unsigned();
+            $table->unsignedBigInteger('performance_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+            $table->foreign('performance_id')->references('id')->on('performances');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

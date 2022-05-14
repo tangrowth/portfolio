@@ -9,8 +9,8 @@ class Post extends Model
     protected $fillable = [
     'title',
     'body',
-    'performances_id',
-    'departments_id'
+    'performance_id',
+    'department_id'
 ];
 
     public function getByLimit(int $limit_count = 10)
@@ -18,14 +18,14 @@ class Post extends Model
         return $this->orderBy('updated_at', 'DESC')->limit($limit_count)->get();
     }
     public function User(){
-        return $this->belongTo('App\User');
+        return $this->belongsTo('App\User');
     }
     
     public function Department(){
-        return $this->belongTo('App\department');
+        return $this->belongsTo('App\Department');
     }
     
     public function Performance(){
-        return $this->belongTo('App\performance');
+        return $this->belongsTo('App\performance');
     }
 }

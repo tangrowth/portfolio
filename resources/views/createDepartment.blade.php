@@ -20,9 +20,9 @@
             <div class="performance">
                 <h2>公演</h2>
                 <select name="department[performance_id]">
-                    {{--@foreach($performances as $performance)--}}
-                        <option value="1">1</option>
-                    {{--@endforeach--}}
+                    @foreach($performances as $performance)
+                        <option value="{{ $performance->id }}">{{ $performance->performance }}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="department">

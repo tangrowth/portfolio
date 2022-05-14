@@ -23,6 +23,7 @@
                         <h3 class='title'>
                              <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
                         </h3>
+                        <a href="/department/{{ $post->Department->id }}">{{ $post->Department->department }}</a>
                         <p class='body'>{{ $post->body }}</p>
                     </div>
                 @endforeach
@@ -37,6 +38,14 @@
                         </p>
                     </div>
                 @endforeach
+        </div>
+        
+        <div class='performances'>
+            @foreach($performances as $performance)
+                <div class='performance'>
+                    <a href="/performance/{{ $performance->id }}">{{ $performance->performance }}</a>
+                </div>
+            @endforeach
         </div>
     </body>
 </html>

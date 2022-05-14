@@ -15,7 +15,7 @@
     </head>
     
     <body>
-        <h1 class='department_title'>公演情報</h1>
+        <h1 class='department_title'>{{ $performance->performance }}</h1>
         <div class='information'>
             <h2>情報</h2>
                 <div class='story'>
@@ -26,6 +26,12 @@
                     <h4>公演日程</h4>
                     <p>{{ $performance->date }}</p>
                 </div>
+        </div>
+        <div class='department'>
+            <h5>部署</h5>
+                @foreach($departments as $department)
+                <a href='/department/{{ $department->id }}'>{{ $department->department }}</a>
+                @endforeach
         </div>
         <button onclick="history.back()">戻る</button>
     </body>

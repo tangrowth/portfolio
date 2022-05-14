@@ -11,9 +11,11 @@ use Illuminate\Http\Request;
 class DepartmentController extends Controller
 {
     
-    public function index(Department $department)
+    public function index(Department $department, User $user)
     {
-        return view('create');
+        $posts = $department->posts()->get();
+        $users = $user->all();
+        return view('department', compact('posts','users', 'department'));
     }
     
     public function store(Department $department, Request $request)
@@ -21,10 +23,10 @@ class DepartmentController extends Controller
         $input = $request['department'];
         $department->fill($input)->save();
         Auth::user()->departments()->attach($department);
-        return redirect('/department/' . $department->id);
+        return redirect('/');
     }
     
-    public function create(Department $department,Performance $performance)
+    public function create(Department $department, Performance $performance)
     {
         return view('createDepartment')->with(['departments' => $department->get(),'performances' => $performance->get()]);
     }

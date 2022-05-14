@@ -14,7 +14,8 @@ class PostController extends Controller
 
     public function index(Post $post,User $user,Department $department,Performance $performance)
     {
-        return view('index')->with(['posts' => $post->getByLimit(),'users' => $user->get(),'departments' => $department->get(),'performance' => $performance->get()]);
+        $posts = $post->getByLimit();
+        return view('index')->with(['posts' => $posts,'users' => $user->get(),'departments' => $department->get(),'performances' => $performance->get()]);
     }
     
     public function memberpage(Post $post,User $user,Department $department)
@@ -50,7 +51,7 @@ class PostController extends Controller
     
     public function store(Request $request, Post $post)
     {
-        $post->users_id = Auth::id();
+        $post->user_id = Auth::id();
         $input = $request['post'];
         $post->fill($input)->save();
         return redirect('/posts/' . $post->id);
