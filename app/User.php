@@ -44,11 +44,11 @@ class User extends Authenticatable
     }
     
     public function Departments(){
-        return $this->hasMany('App\department');
+        return $this->belongsToMany('App\department');
     }
     
     public function Performance(){
-        return $this->belongTo('App\performance');
+        return $this->belongsToMany('App\performance');
     }
     
     public function getByCategory(int $limit_count = 5)

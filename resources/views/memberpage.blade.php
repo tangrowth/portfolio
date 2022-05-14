@@ -34,6 +34,7 @@
                     </div>
                 @endforeach
         </div>
+        <button onclick="history.back()">戻る</button>
     </body>
 </html>
 @endsection

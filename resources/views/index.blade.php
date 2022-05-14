@@ -16,7 +16,7 @@
     <body>
         <h1 class='department_title'>ホーム</h1>
         <div class='posts'>
-            [<a href='/posts/create'>作成</a>]
+            <button  onclick="location.href='/posts/create'">作成</button>
             <h2>一覧</h2>
                 @foreach ($posts as $post)
                     <div class='post'>
@@ -24,7 +24,6 @@
                              <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
                         </h3>
                         <p class='body'>{{ $post->body }}</p>
-                        <p class="edit">[<a href="/posts/{{ $post->id }}/edit">edit</a>]</p>
                     </div>
                 @endforeach
         </div>

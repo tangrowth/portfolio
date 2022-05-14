@@ -19,7 +19,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::post('/department', 'DepartmentController@store');
+Route::get('/department/create', 'DepartmentController@create');
 Route::get('/department/{department}', 'DepartmentController@index');
+
+Route::post('/performance','PerformanceController@store');
+Route::get('/performance/create', 'PerformanceController@create');
 
 Route::post('/posts', 'PostController@store');
 Route::get('/posts/create', 'PostController@create');

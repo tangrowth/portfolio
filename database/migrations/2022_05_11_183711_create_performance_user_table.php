@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePerformancesTable extends Migration
+class CreatePerformanceUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreatePerformancesTable extends Migration
      */
     public function up()
     {
-        Schema::create('performances', function (Blueprint $table) {
+        Schema::create('performance_user', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('performance');
-            $table->string('story')->nullable();
-            $table->string('date')->nullable();
+            $table->bigInteger('performance_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -30,6 +28,6 @@ class CreatePerformancesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('performances');
+        Schema::dropIfExists('performance_user');
     }
 }
