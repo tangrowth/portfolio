@@ -27,6 +27,7 @@
                     <p>{{ $performance->date }}</p>
                 </div>
         </div>
+        <button onclick="history.back()">戻る</button>
     </body>
 </html>
 @endsection

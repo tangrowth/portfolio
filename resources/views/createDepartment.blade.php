@@ -14,12 +14,12 @@
     </head>
     
     <body>
-        <h1 class='department_title'>新規投稿作成</h1>
-        <form action="/posts" method="POST">
+        <h1 class='department_title'>部署作成</h1>
+        <form action="/department" method="POST">
             @csrf
             <div class="performance">
                 <h2>公演</h2>
-                <select name="post[performances_id]">
+                <select name="department[performance_id]">
                     {{--@foreach($performances as $performance)--}}
                         <option value="1">1</option>
                     {{--@endforeach--}}
@@ -27,23 +27,11 @@
             </div>
             <div class="department">
                 <h3>部署</h3>
-                <select name="post[departments_id]">
-                    {{--@foreach($departments as $department)--}}
-                        <option value="1">1</option>
-                    {{--@endforeach--}}
-                </select>
-            </div>
-            <div class="title">
-                <h4>タイトル</h4>
-                <input type="text" name="post[title]" placeholder="タイトル"/>
-            </div>
-            <div class="body">
-                <h5>本文</h5>
-                <textarea name="post[body]" placeholder="今日も一日お疲れさまでした"></textarea>
+                <input type="text" name="department[department]" placeholder="部署名を入力してください"/>
             </div>
             <input type="submit" value="保存"/>
         </form>
-        <button onclick="history.back()">戻る</button>
+        <div class="back">[<a href="/">ホーム</a>]</div>
     </body>
 </html>
 @endsection

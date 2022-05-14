@@ -20,8 +20,11 @@
                 <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
             </h2>
             <p class='body'>{{ $post->body }}</p>
-            <p class="edit">[<a href="/posts/{{ $post->id }}/edit">edit</a>]</p>
+            @if($user->id === Auth::id())
+                <button onclick="location.href='/posts/{{ $post->id }}/edit'">編集</button>
+            @endif
         </div>
+        <button onclick="location.href='/'">戻る</button>
     </body>
 </html>
 @endsection

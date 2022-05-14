@@ -38,9 +38,9 @@ class PostController extends Controller
         return redirect('/posts/' . $post->id);
     }
     
-    public function show(Post $post)
+    public function show(Post $post, User $user,Department $department,Performance $performance)
     {
-        return view('show')->with(['post' => $post]);
+        return view('show')->with(['post' => $post, 'user'=> $user->first(),'departments' => $department->first(),'performances' => $performance->first()]);
     }
     
     public function create(Post $post,User $user,Department $department,Performance $performance)

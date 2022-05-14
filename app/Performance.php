@@ -6,8 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Performance extends Model
 {
+    protected $fillable = [
+    'performance'
+    ];
     public function Users(){
-        return $this->hasMany('App\user');
+        return $this->belongsToMany('App\user');
     }
     public function Department(){
         return $this->hasMany('App\user');

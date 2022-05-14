@@ -63,6 +63,12 @@
                                     <a class="dropdown-item" href="/">
                                         ホーム
                                     </a>
+                                    <a class="dropdown-item" href="/performance/create">
+                                        公演作成
+                                    </a>
+                                    <a class="dropdown-item" href="/department/create">
+                                        部署作成
+                                    </a>
             
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
