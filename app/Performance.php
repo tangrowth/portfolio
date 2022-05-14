@@ -9,13 +9,15 @@ class Performance extends Model
     protected $fillable = [
     'performance'
     ];
+
+    
     public function Users(){
         return $this->belongsToMany('App\user');
     }
-    public function Department(){
+    public function Departments(){
         return $this->hasMany('App\user');
     }
-    public function Post(){
+    public function Posts(){
         return $this->hasMany('App\user');
     }
 

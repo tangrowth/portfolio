@@ -19,18 +19,18 @@
             @csrf
             <div class="performance">
                 <h2>公演</h2>
-                <select name="post[performances_id]">
-                    {{--@foreach($performances as $performance)--}}
-                        <option value="1">1</option>
-                    {{--@endforeach--}}
+                <select name="post[performance_id]">
+                    @foreach($performances as $performance)
+                        <option value="{{ $performance->id }}">{{ $performance->performance }}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="department">
                 <h3>部署</h3>
-                <select name="post[departments_id]">
-                    {{--@foreach($departments as $department)--}}
-                        <option value="1">1</option>
-                    {{--@endforeach--}}
+                <select name="post[department_id]">
+                    @foreach($departments as $department)
+                        <option value="{{ $department->id }}">{{ $department->department }}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="title">

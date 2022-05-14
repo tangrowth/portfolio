@@ -21,4 +21,9 @@ class PerformanceController extends Controller
         $performance->fill($input)->save();
         return redirect('/');
     }
+    
+    public function index(Performance $performance, User $user, Department $department)
+    {
+        return view('performance')->with(['departments' => $department ->department($performance->id), 'performance'=>$performance]);
+    }
 }
