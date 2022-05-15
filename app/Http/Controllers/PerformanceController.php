@@ -26,4 +26,17 @@ class PerformanceController extends Controller
     {
         return view('performance')->with(['departments' => $department ->department($performance->id), 'performance'=>$performance]);
     }
+    
+    public function edit(Performance $performance)
+    {
+        return view('performanceEdit')->with(['performance' => $performance]);
+    }
+    
+    public function update(Request $request, Performance $performance)
+    {
+        $input_performance = $request['performance'];
+        $performance->fill($input_performance)->save();
+        return redirect('/performance/' . $performance->id);
+        
+    }
 }

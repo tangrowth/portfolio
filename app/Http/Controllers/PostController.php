@@ -17,11 +17,6 @@ class PostController extends Controller
         $posts = $post->getByLimit();
         return view('index')->with(['posts' => $posts,'users' => $user->get(),'departments' => $department->get(),'performances' => $performance->get()]);
     }
-    
-    public function memberpage(Post $post,User $user,Department $department)
-    {
-        return view('memberpage')->with(['posts' => $post->get(),'user' => $user,'departments' => $department->get()]);
-    }
  
     public function __construct(){
         $this->middleware('auth');
@@ -41,7 +36,7 @@ class PostController extends Controller
     
     public function show(Post $post, User $user,Department $department,Performance $performance)
     {
-        return view('show')->with(['post' => $post, 'user'=> $user->first(),'departments' => $department->first(),'performances' => $performance->first()]);
+        return view('show')->with(['post' => $post, 'user'=> $user->first(),'department' => $department->first(),'performance' => $performance->first()]);
     }
     
     public function create(Post $post,User $user,Department $department,Performance $performance)

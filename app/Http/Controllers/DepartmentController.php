@@ -11,11 +11,11 @@ use Illuminate\Http\Request;
 class DepartmentController extends Controller
 {
     
-    public function index(Department $department, User $user)
+    public function index(Department $department, User $user,Performance $performance)
     {
         $posts = $department->posts()->get();
         $users = $user->all();
-        return view('department', compact('posts','users', 'department'));
+        return view('department', compact('posts','users', 'department'))->with(['performance' => $performance ->first()]);
     }
     
     public function store(Department $department, Request $request)

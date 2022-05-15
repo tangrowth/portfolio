@@ -26,6 +26,7 @@
                     <h4>公演日程</h4>
                     <p>{{ $performance->date }}</p>
                 </div>
+                <button onclick="location.href='/performance/{{ $performance->id }}/edit'">編集</button>
         </div>
         <div class='department'>
             <h5>部署</h5>

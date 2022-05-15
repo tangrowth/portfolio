@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','age','comment'
     ];
 
     /**
@@ -51,13 +51,9 @@ class User extends Authenticatable
         return $this->belongsToMany('App\performance');
     }
     
-    public function getByCategory(int $limit_count = 5)
+    public function getByUser(int $limit_count = 10)
     {
          return $this->posts()->with('user')->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
 
-    public function test()
-    {
-        return $this->get();
-    }
 }
