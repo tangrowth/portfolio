@@ -34,7 +34,7 @@
                 @foreach ($users as $user)
                     <div class='members'>
                         <p class='member'>
-                            <a href="/memberpage/{{ $user->id }}">{{ $user->name}}</a>
+                            <a href="/memberpage/{{ $user->id }}">{{ $user->name }}</a>
                         </p>
                     </div>
                 @endforeach

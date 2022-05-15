@@ -17,8 +17,9 @@
         <h1 class='department_title'>ホーム</h1>
         <div class='post'>
             <h2 class='title'>
-                <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
+                {{ $post->title }}
             </h2>
+            <a href='/department/{{ $department->id }}'>{{ $department->department }}</a>
             <p class='body'>{{ $post->body }}</p>
             @if($user->id === Auth::id())
                 <button onclick="location.href='/posts/{{ $post->id }}/edit'">編集</button>

@@ -21,6 +21,7 @@
             <p class='icon'>{{ $user->icon }}</p>
             <p class='age'>{{ $user->age }}</p>
             <p class='comment'>{{ $user->comment }}</p>
+            <button onclick="location. href='/memberpage/{{ $user->id }}/edit'">編集</button>
         </div>
         
         <div class='posts'>

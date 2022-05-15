@@ -14,7 +14,7 @@
     </head>
     
     <body>
-        <h1 class='department_title'>{{ $department->department }}ホーム</h1>
+        <h1 class='department_title'>{{ $performance->performance }}{{ $department->department }}ホーム</h1>
         <div class='posts'>
             <h2>一覧</h2>
                 @foreach ($posts as $post)
