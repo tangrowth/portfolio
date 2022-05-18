@@ -37,7 +37,7 @@
                     </div>
                 @endforeach
         </div>
-
+        <button onclick="location.href='/'">戻る</button>
     </body>
 </html>
 @endsection
