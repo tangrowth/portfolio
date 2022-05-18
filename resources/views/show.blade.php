@@ -21,7 +21,7 @@
             </h2>
             <a href='/department/{{ $department->id }}'>{{ $department->department }}</a>
             <p class='body'>{{ $post->body }}</p>
-            @if($user->id === Auth::id())
+            @if($user['id'] === auth::id())
                 <button onclick="location.href='/posts/{{ $post->id }}/edit'">編集</button>
             @endif
         </div>
