@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
 {
+    use SoftDeletes;
+    
     protected $fillable = [
     'title',
     'body',
@@ -26,6 +29,10 @@ class Post extends Model
     }
     
     public function Performance(){
-        return $this->belongsTo('App\performance');
+        return $this->belongsTo('App\Performance');
+    }
+    
+    public function Replies(){
+        return $this->hasMany('App\Reply');
     }
 }

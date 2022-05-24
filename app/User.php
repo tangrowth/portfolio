@@ -50,6 +50,9 @@ class User extends Authenticatable
     public function Performance(){
         return $this->belongsToMany('App\performance');
     }
+    public function Replies(){
+        return $this->hasMany('App\Reply');
+    }
     
     public function getByUser(int $limit_count = 10)
     {

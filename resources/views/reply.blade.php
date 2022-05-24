@@ -14,16 +14,21 @@
     </head>
     
     <body>
-        <h1 class='department_title'>部署作成</h1>
-        <form action="/department" method="POST">
+        <h1 class='department_title'>返信作成</h1>
+        <div class="post">
+                <h2>{{ $post->title }}</h2>
+            <a href='/memberpage/{{ $post->user->id }}'>{{ $post->user->name }}</a>
+            <p>{{ $post->body }}</p>
+            </div>
+        <form action="/posts/{{ $post->id }}" method="POST">
             @csrf
-            <div class="department">
-                <h3>部署</h3>
-                <input type="text" name="department[department]" placeholder="部署名を入力してください"/>
+            <div class="reply">
+                <h3>返信</h3>
+                <textarea name="reply[body]" placeholder="今日も一日お疲れさまでした"></textarea>
             </div>
             <input type="submit" value="保存"/>
         </form>
-        <div class="back">[<a href="/">ホーム</a>]</div>
+        <button onclick="history.back()">戻る</button>
     </body>
 </html>
 @endsection

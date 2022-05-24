@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Department extends Model
 {
     protected $fillable = [
-    'performance_id',
     'department'
     ];
     
@@ -15,6 +14,7 @@ class Department extends Model
     {
         return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
+    
     
     public function department($performance_id)
     {
@@ -26,7 +26,7 @@ class Department extends Model
     }
     
     public function Performance(){
-        return $this->belongsTo('App/performance');
+        return $this->belongsToMany('App/performance');
     }
     
     public function Posts(){

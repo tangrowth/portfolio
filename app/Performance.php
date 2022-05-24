@@ -17,7 +17,7 @@ class Performance extends Model
         return $this->belongsToMany('App\user');
     }
     public function Departments(){
-        return $this->hasMany('App\user');
+        return $this->belongsToMany('App\user');
     }
     public function Posts(){
         return $this->hasMany('App\user');

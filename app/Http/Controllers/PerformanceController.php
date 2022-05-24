@@ -24,7 +24,7 @@ class PerformanceController extends Controller
     
     public function index(Performance $performance, User $user, Department $department)
     {
-        return view('performance')->with(['departments' => $department ->department($performance->id), 'performance'=>$performance]);
+        return view('performance')->with(['departments' => $department->get(), 'performance'=>$performance]);
     }
     
     public function edit(Performance $performance)
