@@ -6,6 +6,7 @@ use App\Post;
 use App\User;
 use App\Department;
 use App\Performance;
+use App\Reply;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -34,9 +35,10 @@ class PostController extends Controller
         return redirect('/posts/' . $post->id);
     }
     
-    public function show(Post $post, User $user,Department $department,Performance $performance)
+    public function show($post, User $user)
     {
-        return view('show')->with(['post' => $post, 'user'=> $user->first(),'department' => $department->first(),'performance' => $performance->first()]);
+        $post=Post::with(['replies.user'])->find($post);
+        return view('show')->with(['post' => $post]);
     }
     
     public function create(Post $post,User $user,Department $department,Performance $performance)
@@ -50,5 +52,16 @@ class PostController extends Controller
         $input = $request['post'];
         $post->fill($input)->save();
         return redirect('/posts/' . $post->id);
+    }
+    
+    public function delete(Post $post)
+    {
+        $post->delete();
+        return redirect('/');
+    }
+    
+    public function reply(Post $post, User $user,Reply $reply)
+    {
+        return view('reply')->with(['post'=> $post, 'user'=> $user ->get(), 'replies'=> $reply ->get()]);
     }
 }

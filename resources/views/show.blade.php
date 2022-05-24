@@ -19,11 +19,27 @@
             <h2 class='title'>
                 {{ $post->title }}
             </h2>
-            <a href='/department/{{ $department->id }}'>{{ $department->department }}</a>
+            <a href='/memberpage/{{ $post->user->id }}'>{{ $post->user->name }}</a>
+            <a href='/performance/{{ $post->performance->id }}'>{{ $post->performance->performance }}</a>
+            <a href='/department/{{ $post->department->id }}'>{{ $post->department->department }}</a>
             <p class='body'>{{ $post->body }}</p>
-            @if($user['id'] === auth::id())
+            <a href='/posts/{{ $post->id }}/reply'>返信</a>
+            @if($post->user->id === auth::id())
                 <button onclick="location.href='/posts/{{ $post->id }}/edit'">編集</button>
+                <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post" style="display:inline">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">削除</button>
+                </from>
             @endif
+        </div>
+        <div class="replies">
+            @foreach($post->replies as $reply)
+            <div class="reply">
+                <a href='/memberpage/{{ $reply->user->id }}'>{{ $reply->user->name }}</a>
+                <p>{{ $reply->body }}</p>
+            </div>
+            @endforeach
         </div>
         <button onclick="location.href='/'">戻る</button>
     </body>

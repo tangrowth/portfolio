@@ -7,25 +7,14 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Mypage</title>
+        <title>Home</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
     </head>
     
     <body>
-        <h1 class='department_title'>{{ $user->name }}</h1>
-        <p href="/mypage/{{ $user->id }}">{{ $user->name }}</p>
-        
-        <div class='profile'>
-            <p class='icon'>{{ $user->icon }}</p>
-            <p class='age'>{{ $user->age }}</p>
-            <p class='comment'>{{ $user->comment }}</p>
-            @if($user->id === auth::id())
-                <button onclick="location. href='/memberpage/{{ $user->id }}/edit'">編集</button>
-            @endif
-        </div>
-        
+        <h1 class='department_title'>{{ $performance->performance }}{{ $department->department }}ホーム</h1>
         <div class='posts'>
             <h2>一覧</h2>
                 @foreach ($posts as $post)
@@ -33,10 +22,12 @@
                         <h3 class='title'>
                              <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
                         </h3>
+                        <p>{{ $post->performance->performance }}</p>
                         <p class='body'>{{ $post->body }}</p>
                     </div>
                 @endforeach
         </div>
+        
         <button onclick="location.href='/'">戻る</button>
     </body>
 </html>

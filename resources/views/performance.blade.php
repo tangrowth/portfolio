@@ -31,7 +31,7 @@
         <div class='department'>
             <h5>部署</h5>
                 @foreach($departments as $department)
-                <a href='/department/{{ $department->id }}'>{{ $department->department }}</a>
+                <a href='/performance/{{ $performance->id }}/department/{{ $department->id }}'>{{ $department->department }}</a>
                 @endforeach
         </div>
         <button onclick="history.back()">戻る</button>

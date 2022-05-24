@@ -14,7 +14,7 @@
     </head>
     
     <body>
-        <h1 class='department_title'>{{ $performance->performance }}{{ $department->department }}ホーム</h1>
+        <h1 class='department_title'>{{ $department->department }}ホーム</h1>
         <div class='posts'>
             <h2>一覧</h2>
                 @foreach ($posts as $post)
@@ -22,6 +22,7 @@
                         <h3 class='title'>
                              <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
                         </h3>
+                        <p>{{ $post->performance->performance }}</p>
                         <p class='body'>{{ $post->body }}</p>
                     </div>
                 @endforeach
