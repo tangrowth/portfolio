@@ -13,7 +13,8 @@ class Post extends Model
     'title',
     'body',
     'performance_id',
-    'department_id'
+    'department_id',
+    'image'
 ];
 
     public function getByLimit(int $limit_count = 10)

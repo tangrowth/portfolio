@@ -19,18 +19,28 @@
             <h2 class='title'>
                 {{ $post->title }}
             </h2>
-            <a href='/memberpage/{{ $post->user->id }}'>{{ $post->user->name }}</a>
             <a href='/performance/{{ $post->performance->id }}'>{{ $post->performance->performance }}</a>
             <a href='/department/{{ $post->department->id }}'>{{ $post->department->department }}</a>
+            <div>
+                <img src={{ $post->user->icon }} class='icon' style="width: 100px; hight:100px;">
+                <a href='/memberpage/{{ $post->user->id }}'>{{ $post->user->name }}</a>
+            </div>
+            <div>
+            <img src={{ $post->image }} class='image' style="width: 1000px; hight:1000px;">
+            </div>
             <p class='body'>{{ $post->body }}</p>
-            <a href='/posts/{{ $post->id }}/reply'>返信</a>
+            <div>
+            <button onclick="location.href='/posts/{{ $post->id }}/reply'">返信</button>
+            </div>
             @if($post->user->id === auth::id())
+            <div>
                 <button onclick="location.href='/posts/{{ $post->id }}/edit'">編集</button>
                 <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post" style="display:inline">
                     @csrf
                     @method('DELETE')
                     <button type="submit">削除</button>
                 </from>
+            </div>
             @endif
         </div>
         <div class="replies">

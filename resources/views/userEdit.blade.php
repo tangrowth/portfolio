@@ -16,20 +16,24 @@
     <body>
         <h1 class='department_title'>プロフィール編集</h1>
         <div class="content">
-            <form action="/memberpage/{{ $user->id }}" method="POST">
+            <form action="/memberpage/{{ $user->id }}" enctype="multipart/form-data" method="POST">
                 @csrf
                 @method('PUT')
+                <div class="icon">
+                    <h2>アイコン</h2>
+                    <input type="file" name='icon'>
+                </div>
                 <div class='user_name'>
-                    <h2>名前</h2>
+                    <h3>名前</h3>
                     <input type='text' name='user[name]' value="{{ $user->name }}">
                 </div>
                 <div class='user_age'>
-                    <h3>年</h3>
+                    <h4>年</h4>
                     <input type='text' name='user[age]' value="{{ $user->age }}">
                 </div>
                 <div class='user_comment'>
-                    <h4>コメント</h4>
-                    <input type='text' name='user[comment]' value="{{$user->comment }}">
+                    <h5>コメント</h5>
+                    <textarea name="user[comment]" placeholder="今日も一日お疲れさまでした。" ><?php print($user["comment"]); ?></textarea>
                 </div>
                 <input type="submit" value="保存">
             </form>

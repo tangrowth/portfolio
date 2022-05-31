@@ -33,6 +33,7 @@
                 @foreach ($users as $user)
                     <div class='members'>
                         <p class='member'>
+                            <img src={{ $user->icon }} class='icon' style="width: 100px; hight:100px;">
                             <a href="/mypage/{{ $user->id }}">{{ $user->name}}</a>
                         </p>
                     </div>
