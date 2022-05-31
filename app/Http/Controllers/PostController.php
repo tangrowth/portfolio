@@ -9,6 +9,7 @@ use App\Performance;
 use App\Reply;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Storage;
 
 class PostController extends Controller
 {
@@ -50,6 +51,9 @@ class PostController extends Controller
     {
         $post->user_id = Auth::id();
         $input = $request['post'];
+        $image = $request->file('image');
+        $path = Storage::disk('s3')->putFile('myprefix', $image, 'public');
+        $post->image = Storage::disk('s3')->url($path);
         $post->fill($input)->save();
         return redirect('/posts/' . $post->id);
     }

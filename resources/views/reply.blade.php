@@ -16,10 +16,14 @@
     <body>
         <h1 class='department_title'>返信作成</h1>
         <div class="post">
-                <h2>{{ $post->title }}</h2>
+            <h2>{{ $post->title }}</h2>
+            <img src={{ $post->user->icon }} class='icon' style="width: 100px; hight:100px;">
             <a href='/memberpage/{{ $post->user->id }}'>{{ $post->user->name }}</a>
-            <p>{{ $post->body }}</p>
+            <div class="image">
+                <img src={{ $post->image }} class='image' style="width: 1000px; hight:1000px;">
             </div>
+            <p>{{ $post->body }}</p>
+        </div>
         <form action="/posts/{{ $post->id }}" method="POST">
             @csrf
             <div class="reply">

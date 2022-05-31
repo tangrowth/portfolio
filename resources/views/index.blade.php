@@ -23,7 +23,10 @@
                         <h3 class='title'>
                              <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
                         </h3>
-                        <a href='/memberpage/{{ $post->user->id }}'>{{ $post->user->name }}</a>
+                        <div>
+                            <img src={{ $post->user->icon }} class='icon' style="width: 100px; hight:100px;">
+                            <a href='/memberpage/{{ $post->user->id }}'>{{ $post->user->name }}</a>
+                        </div>
                         <a href="/department/{{ $post->Department->id }}">{{ $post->Department->department }}</a>
                         <p class='body'>{{ $post->body }}</p>
                     </div>
@@ -35,6 +38,7 @@
                 @foreach ($users as $user)
                     <div class='members'>
                         <p class='member'>
+                            <img src={{ $user->icon }} class='icon' style="width: 100px; hight:100px;">
                             <a href="/memberpage/{{ $user->id }}">{{ $user->name }}</a>
                         </p>
                     </div>

@@ -18,7 +18,7 @@
         <p href="/mypage/{{ $user->id }}">{{ $user->name }}</p>
         
         <div class='profile'>
-            <p class='icon'>{{ $user->icon }}</p>
+            <img src={{ $user->icon }} class='icon' style="width: 100px; hight:100px;">
             <p class='age'>{{ $user->age }}</p>
             <p class='comment'>{{ $user->comment }}</p>
             @if($user->id === auth::id())

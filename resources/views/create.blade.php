@@ -15,7 +15,7 @@
     
     <body>
         <h1 class='department_title'>新規投稿作成</h1>
-        <form action="/posts" method="POST">
+        <form action="/posts" enctype="multipart/form-data" method="POST">
             @csrf
             <div class="performance">
                 <h2>公演</h2>
@@ -40,6 +40,9 @@
             <div class="body">
                 <h5>本文</h5>
                 <textarea name="post[body]" placeholder="今日も一日お疲れさまでした"></textarea>
+            </div>
+            <div class="image">
+                <input type="file" name="image">
             </div>
             <input type="submit" value="保存"/>
         </form>
