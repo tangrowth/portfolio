@@ -6,6 +6,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
 
         <title>Home</title>
 
@@ -14,23 +16,25 @@
     </head>
     
     <body>
-        <h1 class='department_title'>投稿編集</h1>
-        <div class="content">
+        <div class="header">
+            <h1 class='page_title'>投稿編集</h1>
+        </div>
+        <div class="main">
             <form action="/posts/{{ $post->id }}" method="POST">
                 @csrf
                 @method('PUT')
-                <div class='content__title'>
+                <div class='create'>
                     <h2>タイトル</h2>
                     <input type='text' name='post[title]' value="{{ $post->title }}">
                 </div>
-                <div class='content__body'>
+                <div class='create'>
                     <h2>本文</h2>
                     <textarea name="post[body]" placeholder="今日も一日お疲れさまでした。" ><?php print($post["body"]); ?></textarea>
                 </div>
-                <input type="submit" value="保存">
+                <input class="btn" type="submit" value="保存">
             </form>
+        <button class="btn" onclick="history.back()">戻る</button>
         </div>
-        <button onclick="history.back()">戻る</button>
     </body>
 </html>
 @endsection

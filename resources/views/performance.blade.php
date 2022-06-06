@@ -7,6 +7,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
         <title>公演情報</title>
 
@@ -15,26 +16,30 @@
     </head>
     
     <body>
-        <h1 class='department_title'>{{ $performance->performance }}</h1>
-        <div class='information'>
+        <div class="header">
+            <h1 class='page_title'>{{ $performance->performance }}</h1>
+            <button class='header_btn' onclick="location.href='/'">戻る</button>
+            <button class='header_btn' onclick="location.href='/performance/{{ $performance->id }}/edit'">編集</button>
+        </div>
+        <div class='left'>
             <h2>情報</h2>
-                <div class='story'>
+                <div class='left_post'>
                     <h3>あらすじ</h3>
                     <p>{{ $performance->story}}</p>
                 </div>
-                <div calss='date'>
-                    <h4>公演日程</h4>
+                <div class='left_post'>
+                    <h3>公演日程</h3>
                     <p>{{ $performance->date }}</p>
                 </div>
-                <button onclick="location.href='/performance/{{ $performance->id }}/edit'">編集</button>
         </div>
-        <div class='department'>
-            <h5>部署</h5>
+        <div class='right'>
+            <h2>部署</h2>
+            <div class='right_1'>
                 @foreach($departments as $department)
                 <a href='/performance/{{ $performance->id }}/department/{{ $department->id }}'>{{ $department->department }}</a>
                 @endforeach
+            </div>
         </div>
-        <button onclick="history.back()">戻る</button>
     </body>
 </html>
 @endsection

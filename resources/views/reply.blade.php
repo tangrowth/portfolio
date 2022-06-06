@@ -6,6 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
         <title>Home</title>
 
@@ -14,25 +15,29 @@
     </head>
     
     <body>
-        <h1 class='department_title'>返信作成</h1>
-        <div class="post">
+        <div class="header">
+            <h1 class='page_title'>返信作成</h1>
+            <button class="header_btn" onclick="history.back()">戻る</button>
+        </div>
+        <div class="left">
             <h2>{{ $post->title }}</h2>
-            <img src={{ $post->user->icon }} class='icon' style="width: 100px; hight:100px;">
+            <img src={{ $post->user->icon }} class='icon'>
             <a href='/memberpage/{{ $post->user->id }}'>{{ $post->user->name }}</a>
             <div class="image">
-                <img src={{ $post->image }} class='image' style="width: 1000px; hight:1000px;">
+                <img src={{ $post->image }} class='image'>
             </div>
-            <p>{{ $post->body }}</p>
+            <p class="left_body">{{ $post->body }}</p>
         </div>
-        <form action="/posts/{{ $post->id }}" method="POST">
-            @csrf
-            <div class="reply">
-                <h3>返信</h3>
-                <textarea name="reply[body]" placeholder="今日も一日お疲れさまでした"></textarea>
-            </div>
-            <input type="submit" value="保存"/>
-        </form>
-        <button onclick="history.back()">戻る</button>
+        <div class="right">
+            <form action="/posts/{{ $post->id }}" method="POST">
+                @csrf
+                    <h2>返信</h2>
+                <div class="right_1">
+                    <textarea name="reply[body]" placeholder="今日も一日お疲れさまでした"></textarea>
+                </div>
+                <input class="btn" type="submit" value="保存"/>
+            </form>
+        </div>
     </body>
 </html>
 @endsection

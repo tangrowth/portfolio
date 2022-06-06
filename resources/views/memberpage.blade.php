@@ -6,38 +6,39 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         <title>Mypage</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
     </head>
     
     <body>
-        <h1 class='department_title'>{{ $user->name }}</h1>
-        <p href="/mypage/{{ $user->id }}">{{ $user->name }}</p>
-        
-        <div class='profile'>
-            <img src={{ $user->icon }} class='icon' style="width: 100px; hight:100px;">
-            <p class='age'>{{ $user->age }}</p>
-            <p class='comment'>{{ $user->comment }}</p>
-            @if($user->id === auth::id())
-                <button onclick="location. href='/memberpage/{{ $user->id }}/edit'">編集</button>
-            @endif
+        <div class="header">
+            <h1 class='page_title'>{{ $user->name }}</h1>
         </div>
         
-        <div class='posts'>
+        <div class='left'>
             <h2>一覧</h2>
                 @foreach ($posts as $post)
-                    <div class='post'>
-                        <h3 class='title'>
-                             <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
-                        </h3>
-                        <p class='body'>{{ $post->body }}</p>
+                    <div class='left_post'>
+                        <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
+                        <div><a href="/department/{{ $post->department->id }}">{{ $post->department->department }}</a></div>
+                        <div class="left_body">
+                            <p class='body'>{{ $post->body }}</p>
+                        </div>
                     </div>
                 @endforeach
+        <button class="btn" onclick="location.href='/'">戻る</button>
         </div>
-        <button onclick="location.href='/'">戻る</button>
+        <div class='right'>
+            <h2>{{ $user->name }}</h2>
+            <div class="right_1">
+            <img src={{ $user->icon }} class='icon'>
+                <p>{{ $user->age }}</p>
+                <p>{{ $user->comment }}</p>
+                @if($user->id === auth::id())
+                    <button class="btn"onclick="location. href='/memberpage/{{ $user->id }}/edit'">編集</button>
+                @endif
+            </div>
+        </div>
     </body>
 </html>
 @endsection
