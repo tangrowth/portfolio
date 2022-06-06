@@ -6,19 +6,19 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
         <title>Home</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
     </head>
     
     <body>
-        <h1 class='department_title'>{{ $department->department }}ホーム</h1>
-        <div class='posts'>
+        <div class="header">
+            <h1 class='page_title'>{{ $department->department }}ホーム</h1>
+        </div>
+        <div class='left'>
             <h2>一覧</h2>
                 @foreach ($posts as $post)
-                    <div class='post'>
+                    <div class='left_post'>
                         <h3 class='title'>
                              <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
                         </h3>
@@ -28,18 +28,16 @@
                 @endforeach
         </div>
         
-        <div class='users'>
+        <div class="right">
             <h4>メンバー</h4>
                 @foreach ($users as $user)
-                    <div class='members'>
-                        <p class='member'>
+                        <div class='right_1'>
                             <img src={{ $user->icon }} class='icon' style="width: 100px; hight:100px;">
                             <a href="/mypage/{{ $user->id }}">{{ $user->name}}</a>
-                        </p>
-                    </div>
+                        </div>
                 @endforeach
         </div>
-        <button onclick="location.href='/'">戻る</button>
+        <button class="btn" onclick="location.href='/'">戻る</button>
     </body>
 </html>
 @endsection

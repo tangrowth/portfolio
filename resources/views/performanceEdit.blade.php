@@ -6,6 +6,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
 
         <title>Home</title>
 
@@ -14,27 +16,29 @@
     </head>
     
     <body>
-        <h1 class='department_title'>公演編集</h1>
-        <div class="performance">
+        <div class='header'>
+            <h1 class='page_title'>公演編集</h1>
+            <button class='header_btn' onclick="location.href='/'">戻る</button>
+        </div>
+        <div class="main">
             <form action="/performance/{{ $performance->id }}" method="POST">
                 @csrf
                 @method('PUT')
-                <div class='performance_title'>
+                <div class='create'>
                     <h2>タイトル</h2>
                     <input type='text' name='performance[performance]' value="{{ $performance->performance }}">
                 </div>
-                <div class='performance_story'>
+                <div class='create'>
                     <h2>あらすじ</h2>
                     <input type='text' name='performance[story]' value="{{ $performance->story }}">
                 </div>
-                <div class='performance_date'>
-                    <h3>公演日程</h3>
+                <div class='create'>
+                    <h2>公演日程</h2>
                     <input type='text' name='performance[date]' value="{{ $performance->date }}">
                 </div>
-                <input type="submit" value="保存">
+                <input class='btn' type="submit" value="保存">
             </form>
         </div>
-        <button onclick="history.back()">戻る</button>
     </body>
 </html>
 @endsection

@@ -6,6 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
         <title>Home</title>
 
@@ -14,21 +15,24 @@
     </head>
     
     <body>
-        <h1 class='department_title'>{{ $performance->performance }}{{ $department->department }}ホーム</h1>
-        <div class='posts'>
+        <div class='header'>
+            <h1 class='page_title'>{{ $performance->performance }}{{ $department->department }}</h1>
+        </div>
+        <div class='main'>
             <h2>一覧</h2>
                 @foreach ($posts as $post)
-                    <div class='post'>
-                        <h3 class='title'>
+                    <div class='create'>
+                        <h2>
                              <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
-                        </h3>
-                        <p>{{ $post->performance->performance }}</p>
+                        </h2>
+                        <img　class="icon" src={{ $post->user->icon }} class='icon' style="width: 100px; hight:100px;">
+                        <a href="/memberpage/{{ $post->user->id }}">{{ $post->user->name }}</a>
                         <p class='body'>{{ $post->body }}</p>
                     </div>
                 @endforeach
         </div>
         
-        <button onclick="location.href='/'">戻る</button>
+        <button class='btn' onclick="location.href='/'">戻る</button>
     </body>
 </html>
 @endsection

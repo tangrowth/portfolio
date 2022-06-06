@@ -6,6 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
         <title>Home</title>
 
@@ -14,16 +15,20 @@
     </head>
     
     <body>
-        <h1 class='department_title'>部署作成</h1>
-        <form action="/department" method="POST">
-            @csrf
-            <div class="department">
-                <h3>部署</h3>
-                <input type="text" name="department[department]" placeholder="部署名を入力してください"/>
-            </div>
-            <input type="submit" value="保存"/>
-        </form>
-        <div class="back">[<a href="/">ホーム</a>]</div>
+        <div class="header">
+            <h1 class='page_title'>部署作成</h1>
+        </div>
+        <div class="main">
+            <form action="/department" method="POST">
+                @csrf
+                <div class="create">
+                    <h2>部署</h2>
+                    <input type="text" name="department[department]" placeholder="部署名を入力してください"/>
+                </div>
+                <input class="btn" type="submit" value="保存"/>
+            </form>
+            <button　class="btn" onclick="location.href='/'">戻る</button>
+        </div>
     </body>
 </html>
 @endsection
