@@ -1,0 +1,12 @@
+#header-bg {
+    background-color: #20819A;
+}
+#header-title{
+    font-size: 40px;
+    color: #fff;
+    float:left;
+    padding: 15px;
+}
+.header-list{
+    color: #fff;
+}

@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
@@ -16,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','age','comment','icon'
     ];
 
     /**
@@ -36,4 +37,26 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function Posts(){
+        return $this->hasMany('App\Post');
+    }
+    
+    public function Departments(){
+        return $this->belongsToMany('App\department');
+    }
+    
+    public function Performance(){
+        return $this->belongsToMany('App\performance');
+    }
+    public function Replies(){
+        return $this->hasMany('App\Reply');
+    }
+    
+    public function getByUser(int $limit_count = 10)
+    {
+         return $this->posts()->with('user')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
+
 }
