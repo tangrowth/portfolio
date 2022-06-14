@@ -52,8 +52,10 @@ class PostController extends Controller
         $post->user_id = Auth::id();
         $input = $request['post'];
         $image = $request->file('image');
+        if($image){
         $path = Storage::disk('s3')->putFile('myprefix', $image, 'public');
         $post->image = Storage::disk('s3')->url($path);
+        }
         $post->fill($input)->save();
         return redirect('/posts/' . $post->id);
     }

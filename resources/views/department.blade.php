@@ -12,32 +12,37 @@
     </head>
     
     <body>
-        <div class="header">
-            <h1 class='page_title'>{{ $department->department }}ホーム</h1>
-        </div>
-        <div class='left'>
-            <h2>一覧</h2>
-                @foreach ($posts as $post)
-                    <div class='left_post'>
-                        <h3 class='title'>
-                             <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
-                        </h3>
-                        <p>{{ $post->performance->performance }}</p>
-                        <p class='body'>{{ $post->body }}</p>
-                    </div>
-                @endforeach
-        </div>
-        
-        <div class="right">
-            <h4>メンバー</h4>
-                @foreach ($users as $user)
-                        <div class='right_1'>
-                            <img src={{ $user->icon }} class='icon' style="width: 100px; hight:100px;">
-                            <a href="/mypage/{{ $user->id }}">{{ $user->name}}</a>
+        <h1>{{ $department->department }}ホーム</h1>
+        <div class="main">
+            <div class='left'>
+                <h2>一覧</h2>
+                    @foreach ($posts as $post)
+                        <div class='left_post'>
+                            <h3 class='title'>
+                                 <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
+                            </h3>
+                            <a href="/performance/{{ $post->performance->id }}">{{ $post->performance->performance }}</a>
+                            <div>
+                            @if($post->image)
+                            <img src={{ $post->image }} class='image'>
+                            @endif
+                            </div>
+                            <p class='body'>{{ $post->body }}</p>
                         </div>
-                @endforeach
+                    @endforeach
+            <a class="btn" href='/'>戻る</a>
+            </div>
+            
+            <div class="right">
+                <h2>メンバー</h2>
+                    @foreach ($users as $user)
+                            <div class='right_1'>
+                                <img src={{ $user->icon }} class='icon'>
+                                <a href="/memberpage/{{ $user->id }}">{{ $user->name }}</a>
+                            </div>
+                    @endforeach
+            </div>
         </div>
-        <button class="btn" onclick="location.href='/'">戻る</button>
     </body>
 </html>
 @endsection

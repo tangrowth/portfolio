@@ -14,45 +14,47 @@
     </head>
     
     <body>
-        <div class="header">
-            <h1 class='page_title'>ホーム</h1>
-        <button class="header_btn" onclick="location.href='/'">戻る</button>
-        </div>
-        <div class='left'>
-            <h2>
-                {{ $post->title }}
-            </h2>
-            <a href='/performance/{{ $post->performance->id }}'>{{ $post->performance->performance }}</a>
-            <a href='/department/{{ $post->department->id }}'>{{ $post->department->department }}</a>
-            <div>
-                <img src={{ $post->user->icon }} class='icon'>
-                <a href='/memberpage/{{ $post->user->id }}'>{{ $post->user->name }}</a>
+        <div class="main">
+            <div class='left'>
+                <div class='show_post'>
+                    <h2>
+                        {{ $post->title }}
+                    </h2>
+                    <a href='/performance/{{ $post->performance->id }}'>{{ $post->performance->performance }}</a>
+                    <a href='/department/{{ $post->department->id }}'>{{ $post->department->department }}</a>
+                    <div>
+                        <img src={{ $post->user->icon }} class='icon'>
+                        <a href='/memberpage/{{ $post->user->id }}'>{{ $post->user->name }}</a>
+                    </div>
+                    <div>
+                    @if($post->image)
+                    <img src={{ $post->image }} class='image'>
+                    @endif
+                    </div>
+                    <p class='body'>{{ $post->body }}</p>
+                </div>
+                <div>
+                @if($post->user->id === auth::id())
+                    <a class="btn" href='/posts/{{ $post->id }}/edit'>編集</a>
+                    <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" name="delete" method="post" style="display:inline">
+                        @csrf
+                        @method('DELETE')
+                        <a href="#" class="btn" onclick="document.delete.submit()">削除</a>
+                    </from>
+                @endif
+                <a class="btn" href='/'>戻る</a>
+                <a class="btn" href='/posts/{{ $post->id }}/reply'>返信</a>
+                </div>
             </div>
-            <div>
-            <img src={{ $post->image }} class='image'>
+            <div class="right">
+                <h2>返信</h2>
+                @foreach($post->replies as $reply)
+                <div class="right_1">
+                    <a href='/memberpage/{{ $reply->user->id }}'>{{ $reply->user->name }}</a>
+                    <p>{{ $reply->body }}</p>
+                </div>
+                @endforeach
             </div>
-            <p class='body'>{{ $post->body }}</p>
-            <div>
-            <button class="btn" onclick="location.href='/posts/{{ $post->id }}/reply'">返信</button>
-            </div>
-            @if($post->user->id === auth::id())
-            <div>
-                <button class="btn" onclick="location.href='/posts/{{ $post->id }}/edit'">編集</button>
-                <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post" style="display:inline">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn" type="submit">削除</button>
-                </from>
-            </div>
-            @endif
-        </div>
-        <div class="right">
-            @foreach($post->replies as $reply)
-            <div class="right_1">
-                <a href='/memberpage/{{ $reply->user->id }}'>{{ $reply->user->name }}</a>
-                <p>{{ $reply->body }}</p>
-            </div>
-            @endforeach
         </div>
     </body>
 </html>

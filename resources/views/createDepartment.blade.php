@@ -18,7 +18,7 @@
         <div class="header">
             <h1 class='page_title'>部署作成</h1>
         </div>
-        <div class="main">
+        <div class="center">
             <form action="/department" method="POST">
                 @csrf
                 <div class="create">

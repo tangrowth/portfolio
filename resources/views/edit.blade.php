@@ -19,7 +19,7 @@
         <div class="header">
             <h1 class='page_title'>投稿編集</h1>
         </div>
-        <div class="main">
+        <div class="center">
             <form action="/posts/{{ $post->id }}" method="POST">
                 @csrf
                 @method('PUT')
