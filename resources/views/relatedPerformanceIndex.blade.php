@@ -15,24 +15,21 @@
     </head>
     
     <body>
-        <div class='header'>
-            <h1 class='page_title'>{{ $performance->performance }}{{ $department->department }}</h1>
-        </div>
-        <div class='main'>
-            <h2>一覧</h2>
+        <div class='center'>
+            <h2>{{ $performance->performance }}{{ $department->department }}</h2>
                 @foreach ($posts as $post)
                     <div class='create'>
                         <h2>
                              <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
                         </h2>
-                        <img　class="icon" src={{ $post->user->icon }} class='icon' style="width: 100px; hight:100px;">
+                        <img　class="icon" src={{ $post->user->icon }} class='icon'>
                         <a href="/memberpage/{{ $post->user->id }}">{{ $post->user->name }}</a>
-                        <p class='body'>{{ $post->body }}</p>
+                        <p>{{ $post->body }}</p>
+        <div><a class='test' href='/'>戻る</a></div>
                     </div>
                 @endforeach
         </div>
         
-        <button class='btn' onclick="location.href='/'">戻る</button>
     </body>
 </html>
 @endsection

@@ -16,7 +16,7 @@
         <div class="header">
             <h1 class='page_title'>公演作成</h1>
         </div>
-        <div class="main">
+        <div class="center">
             <form action="/performance" method="POST">
                 @csrf
                 <div class="create">

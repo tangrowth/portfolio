@@ -11,32 +11,38 @@
     </head>
     
     <body>
-        <div class="header">
-            <h1 class='page_title'>{{ $user->name }}</h1>
-        </div>
         
-        <div class='left'>
-            <h2>一覧</h2>
-                @foreach ($posts as $post)
-                    <div class='left_post'>
-                        <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
-                        <div><a href="/department/{{ $post->department->id }}">{{ $post->department->department }}</a></div>
-                        <div class="left_body">
-                            <p class='body'>{{ $post->body }}</p>
-                        </div>
-                    </div>
-                @endforeach
-        <button class="btn" onclick="location.href='/'">戻る</button>
-        </div>
-        <div class='right'>
+        <div class="main">
+            <div class='left'>
             <h2>{{ $user->name }}</h2>
-            <div class="right_1">
-            <img src={{ $user->icon }} class='icon'>
-                <p>{{ $user->age }}</p>
-                <p>{{ $user->comment }}</p>
-                @if($user->id === auth::id())
-                    <button class="btn"onclick="location. href='/memberpage/{{ $user->id }}/edit'">編集</button>
-                @endif
+                    @foreach ($posts as $post)
+                        <div class='left_post'>
+                            <h3>
+                                <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
+                            </h3>
+                            <div><a href="/department/{{ $post->department->id }}">{{ $post->department->department }}</a></div>
+                            <div>
+                            @if($post->image)
+                            <img src={{ $post->image }} class='image'>
+                            @endif
+                            </div>
+                            <div class="left_body">
+                                <p class='body'>{{ $post->body }}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                <a class="btn" href='/'>戻る</a>
+            </div>
+            <div class='right'>
+                <h2>プロフィール</h2>
+                <div class="right_1">
+                <img src={{ $user->icon }} class='icon'>
+                    <p>{{ $user->age }}</p>
+                    <p>{{ $user->comment }}</p>
+                    @if($user->id === auth::id())
+                        <a class="left_btn" href='/memberpage/{{ $user->id }}/edit'>編集</a>
+                    @endif
+                </div>
             </div>
         </div>
     </body>

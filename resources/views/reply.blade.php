@@ -15,28 +15,32 @@
     </head>
     
     <body>
-        <div class="header">
-            <h1 class='page_title'>返信作成</h1>
-            <button class="header_btn" onclick="history.back()">戻る</button>
-        </div>
-        <div class="left">
-            <h2>{{ $post->title }}</h2>
-            <img src={{ $post->user->icon }} class='icon'>
-            <a href='/memberpage/{{ $post->user->id }}'>{{ $post->user->name }}</a>
-            <div class="image">
-                <img src={{ $post->image }} class='image'>
-            </div>
-            <p class="left_body">{{ $post->body }}</p>
-        </div>
-        <div class="right">
-            <form action="/posts/{{ $post->id }}" method="POST">
-                @csrf
-                    <h2>返信</h2>
-                <div class="right_1">
-                    <textarea name="reply[body]" placeholder="今日も一日お疲れさまでした"></textarea>
+        <h1>返信作成</h1>
+        <div class="main">
+            <div class="left">
+                <div class="left_post">
+                <h2>{{ $post->title }}</h2>
+                <img src={{ $post->user->icon }} class='icon'>
+                <a href='/memberpage/{{ $post->user->id }}'>{{ $post->user->name }}</a>
+                <div class="image">
+                    @if($post->image){
+                    <img src={{ $post->image }} class='image'>
+                    }
+                    @endif
                 </div>
-                <input class="btn" type="submit" value="保存"/>
-            </form>
+                <p>{{ $post->body }}</p>
+                </div>
+            </div>
+            <div class="right">
+                <form action="/posts/{{ $post->id }}" method="POST">
+                    @csrf
+                        <h2>返信</h2>
+                    <div class="right_1">
+                        <textarea name="reply[body]" placeholder="今日も一日お疲れさまでした"></textarea>
+                    </div>
+                    <input class="btn" type="submit" value="保存"/>
+                </form>
+            </div>
         </div>
     </body>
 </html>
