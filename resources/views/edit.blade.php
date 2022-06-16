@@ -16,10 +16,8 @@
     </head>
     
     <body>
-        <div class="header">
-            <h1 class='page_title'>投稿編集</h1>
-        </div>
         <div class="center">
+        <h1 class='page_title'>投稿編集</h1>
             <form action="/posts/{{ $post->id }}" method="POST">
                 @csrf
                 @method('PUT')
@@ -32,8 +30,8 @@
                     <textarea name="post[body]" placeholder="今日も一日お疲れさまでした。" ><?php print($post["body"]); ?></textarea>
                 </div>
                 <input class="btn" type="submit" value="保存">
-            </form>
         <button class="btn" onclick="history.back()">戻る</button>
+            </form>
         </div>
     </body>
 </html>

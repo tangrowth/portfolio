@@ -13,10 +13,8 @@
     </head>
     
     <body>
-        <div class="header">
-            <h1 class='page_title'>公演作成</h1>
-        </div>
         <div class="center">
+            <h1 class='page_title'>公演作成</h1>
             <form action="/performance" method="POST">
                 @csrf
                 <div class="create">
@@ -24,8 +22,8 @@
                         <input type="text" name="performance[performance]" placeholder="公演名を入力してください"/>
                 </div>
                 <input class="btn" type="submit" value="保存"/>
-            </form>
             <button class="btn" onclick="location.href='/'">戻る</button>
+            </form>
         </div>
     </body>
 </html>

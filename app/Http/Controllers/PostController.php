@@ -8,7 +8,7 @@ use App\Department;
 use App\Performance;
 use App\Reply;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
 use Storage;
 
 class PostController extends Controller
@@ -28,7 +28,7 @@ class PostController extends Controller
     {
         return view('edit')->with(['post' => $post]);
     }
-    public function update(Request $request, Post $post)
+    public function update(PostRequest $request, Post $post)
     {
         $input_post = $request['post'];
         $post->fill($input_post)->save();
@@ -47,7 +47,7 @@ class PostController extends Controller
         return view('create')->with(['posts' => $post->getByLimit(),'departments' => $department->get(),'performances' => $performance->get()]);
     }
     
-    public function store(Request $request, Post $post)
+    public function store(PostRequest $request, Post $post)
     {
         $post->user_id = Auth::id();
         $input = $request['post'];

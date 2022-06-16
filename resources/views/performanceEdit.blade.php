@@ -16,11 +16,8 @@
     </head>
     
     <body>
-        <div class='header'>
+        <div class="center">
             <h1 class='page_title'>公演編集</h1>
-            <button class='header_btn' onclick="location.href='/'">戻る</button>
-        </div>
-        <div class="main">
             <form action="/performance/{{ $performance->id }}" method="POST">
                 @csrf
                 @method('PUT')
@@ -37,6 +34,7 @@
                     <input type='text' name='performance[date]' value="{{ $performance->date }}">
                 </div>
                 <input class='btn' type="submit" value="保存">
+            <button class='btn' onclick="location.href='/'">戻る</button>
             </form>
         </div>
     </body>
