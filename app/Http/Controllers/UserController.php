@@ -6,7 +6,7 @@ use App\User;
 use App\Post;
 use App\Department;
 use App\Performance;
-use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 use Storage;
 
 class UserController extends Controller
@@ -20,7 +20,7 @@ class UserController extends Controller
     {
         return view('userEdit')->with(['user' => $user]);
     }
-    public function update(Request $request,User $user)
+    public function update(UserRequest $request,User $user)
     {
         $input_user = $request['user'];
         $icon = $request->file('icon');

@@ -38,10 +38,13 @@
                     <div class="create">
                         <h2>タイトル</h2>
                         <input type="text" name="post[title]" placeholder="タイトル"/>
+                        <p class="title__error" style="color:red">{{ $errors->first('post.title') }}</p>
                     </div>
                     <div class="create">
                         <h2>本文</h2>
                         <textarea name="post[body]" placeholder="今日も一日お疲れさまでした"></textarea>
+                    <p class="post__error" style="color:red">{{ $errors->first('post.body') }}</p>
+
                     </div>
                     <div class="create">
                         <h2>画像</h2>

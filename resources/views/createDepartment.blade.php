@@ -15,10 +15,8 @@
     </head>
     
     <body>
-        <div class="header">
-            <h1 class='page_title'>部署作成</h1>
-        </div>
         <div class="center">
+            <h1 class='page_title'>部署作成</h1>
             <form action="/department" method="POST">
                 @csrf
                 <div class="create">
@@ -26,8 +24,8 @@
                     <input type="text" name="department[department]" placeholder="部署名を入力してください"/>
                 </div>
                 <input class="btn" type="submit" value="保存"/>
-            </form>
             <button　class="btn" onclick="location.href='/'">戻る</button>
+            </form>
         </div>
     </body>
 </html>
